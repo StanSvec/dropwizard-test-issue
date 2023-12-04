@@ -28,21 +28,9 @@ public class IPAddressFactory implements Factory<IPAddress> {
             return IPAddress.localhost();
         }
 
-        if (ipAddress.contains(",")) {
-            String[] addresses = ipAddress.split(",");
-            ipAddress = addresses[0];
-        }
-
-        // An IPv6 address does not contain a '.' and we only return a valid IPv4 address
-        if (!ipAddress.contains(".")) {
-            ipAddress = "127.0.0.1";
-        }
-
         return new IPAddress(ipAddress);
     }
 
     @Override
-    public void dispose(IPAddress s) {
-
-    }
+    public void dispose(IPAddress s) {}
 }
