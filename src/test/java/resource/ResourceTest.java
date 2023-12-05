@@ -6,6 +6,7 @@ import io.dropwizard.testing.junit5.ResourceExtension;
 import jakarta.ws.rs.core.Response;
 import org.glassfish.hk2.utilities.binding.AbstractBinder;
 import org.glassfish.jersey.process.internal.RequestScoped;
+import org.glassfish.jersey.test.grizzly.GrizzlyWebTestContainerFactory;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import resources.TestResource;
@@ -18,6 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class ResourceTest {
 
     private static final ResourceExtension EXT = ResourceExtension.builder()
+            .setTestContainerFactory(new GrizzlyWebTestContainerFactory())
             .addProvider(new AbstractBinder() {
                 @Override
                 protected void configure() {
